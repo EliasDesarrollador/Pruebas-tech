@@ -6,7 +6,7 @@ import java.util.List;
 public class RegistroUsuario {
 	private List<Usuario> usuariosRegistrados = new ArrayList();
 	
-	public  String registrarUsuario(String nombre, String email , String password) { 
+	public  String registrarUsuario(String nombre, String email , String password) {
 		if (nombre.isEmpty() || email.isEmpty()  || password.isEmpty() ) {
 			return "Error : Campos vacios";
 		}

@@ -12,8 +12,15 @@ public class RegistroUsuarioDB  extends  RegistroUsuario {
 	    	    if (nombre.isEmpty() ||  email.isEmpty()  || password.isEmpty() ) {
 	    	    	 return "Error : Campos vacios" ;
 	    	    }
+				try  ( Connection con  = Conexion.getConnection()) {
+					// Verificar email duplicado
+					PreparedStatement psCheck = con.prepareStatement("SELECT  * FROM usuarios  WHERE  email =  ?");
+					psCheck.setString(1, email);
+					ResultSet rs  = psChek.executeQuery();
+					 if (rs.next()){
+						return "Error : Email ya registrado";
+					 }
+					 
+				}
 	    }
-	
-	
-
 }
