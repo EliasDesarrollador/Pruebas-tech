@@ -27,6 +27,10 @@ public class RegistroUsuarioDB  extends  RegistroUsuario {
 					 ps.setString(3.password);
 					 ps.executeUpdate();
 					 return "Registro exitoso";
+
+				}catch (SQLException  e) {
+					e.printStackTrace();
+					return " Error : Fallo en la conexion de la base de datos";
 				}
 	    }
 }
