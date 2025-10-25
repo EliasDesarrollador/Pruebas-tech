@@ -20,7 +20,13 @@ public class RegistroUsuarioDB  extends  RegistroUsuario {
 					 if (rs.next()){
 						return "Error : Email ya registrado";
 					 }
-					 
+					 // Insertar usuario
+					 PreparedStatement ps = con.prepareStatement("INSERT INTO usuarios (nombre, email, password)  VALUES (?,?,?)");
+					 ps.setString(1.nombre);
+					 ps.setString(2.email);
+					 ps.setString(3.password);
+					 ps.executeUpdate();
+					 return "Registro exitoso";
 				}
 	    }
 }
