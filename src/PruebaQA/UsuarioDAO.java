@@ -31,9 +31,9 @@ public class UsuarioDAO {
 		}
 	}
 	// Metodo  para listar Usuarios de la DB
-	 public void ListarUsuarios() {
+	 public void listarUsuarios() {
 		 // Consulta SQL  para traer toda las filas de la tabla usuarios
-		 String sql = "SELECT  * FROM Usuarios;";
+		 String sql = "SELECT  * FROM usuarios;";
 		 
 		 try (Connection con = Conexion.getConnection(); // abrimos la conexion 
 				 PreparedStatement ps =  con.prepareStatement(sql); // Preparamos la consulta 
@@ -52,8 +52,30 @@ public class UsuarioDAO {
 		 } catch (SQLException e ) {
 			 System.out.println("Error  al listar Usuarios : " + e.getMessage());
 		 }
-				 
-	 }
-
-	
+   }
+		 // Metodo para actualizar  los datos de un  usuario  segun su ID
+       public boolean actualizarUsuario(Usuario u ) {
+			 
+			 // Consulta SQL  para modificar  la fila donde coincide el ID
+			 String sql = "UPDATE usuarios  SET nombre = ? , email = ? , contrasena = ?  WHERE id = ?";
+			 
+			 try (Connection con = Conexion.getConnection(); // Conexion con la DB
+					 PreparedStatement ps = con.prepareStatement(sql))  // Preparamos la consulta 
+					 
+					// Cargamos los nuevos valores  para actualizar 
+					 ps.setString(1, u.getNombre());     
+					 ps.SetString(2,u.getEmail());
+					 ps.SetString(3,u.getContrasena());
+					 ps.setInt(4, u.getId));
+					 
+					 ps.executeUpdate() ;{ // Ejecutamos la actualizacion
+						 return true; // Todo Bien 
+						 
+			}  catch (SQLException e ) {
+			 System.out.println("Error al actualizar usuario : " + e.getMessage());
+			 return false ;  // Algo sale mal
+		 }
+       }
 }
+			  
+    
