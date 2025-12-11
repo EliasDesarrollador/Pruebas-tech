@@ -16,7 +16,7 @@ public class UsuarioDAO {
 
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getEmail());
-            ps.setString(3, u.getContrasena());
+            ps.setString(3, u.getcontrasena());
 
             ps.executeUpdate();
             return true;
@@ -59,8 +59,8 @@ public class UsuarioDAO {
 
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getEmail());
-            ps.setString(3, u.getContrasena());
-            ps.setInt(4, u.getId());
+            ps.setString(3, u.getcontrasena());
+            ps.setInt(4, u.getid());
 
             ps.executeUpdate();
             return true;
